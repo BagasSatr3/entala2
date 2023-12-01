@@ -28,17 +28,8 @@ export default function SimpleCard() {
 
   const onSubmit = async (data: any) => {
     try {
-      // const formData = new FormData();
-
-      // Append non-file data to the FormData object
-      // formData.append("username", data.username);
-      // formData.append("password", data.password);
-
-      // Handle form submission logic here with FormData
-
       const res = await API.post("/login", data);
       localStorage.setItem("token", res.data.token);
-      // console.log(res.data);
       console.log(data);
       navigate("/");
     } catch (error) {

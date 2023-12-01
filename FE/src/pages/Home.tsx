@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Table,
   TableCaption,
   TableContainer,
@@ -13,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { API } from "../libs/api";
+import { useNavigate } from "react-router-dom";
 
 interface ICustomer {
   id: number;
@@ -38,6 +40,7 @@ interface ITransaction {
 }
 
 export default function Home() {
+  const navigate = useNavigate();
   const [customer, setCustomer] = useState<ICustomer[]>([]);
   const [product, setProduct] = useState<IProduct[]>([]);
   const [transaction, setTransaction] = useState<ITransaction[]>([]);
@@ -78,6 +81,7 @@ export default function Home() {
         <Text fontSize={"4xl"} textAlign={"center"}>
           Products
         </Text>
+        <Button onClick={() => navigate("/addProduct")}>Add</Button>
         {product.length > 0 ? (
           <TableContainer>
             <Table variant="simple">
@@ -148,6 +152,7 @@ export default function Home() {
         <Text fontSize={"4xl"} textAlign={"center"}>
           Transaction
         </Text>
+        <Button onClick={() => navigate("/addTransaction")}>Add</Button>
         {transaction.length > 0 ? (
           <TableContainer>
             <Table variant="simple">
